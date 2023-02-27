@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "../index.css";
 
-function BookCreate(onSumbit) {
+function BookCreate({ onCreate }) {
   const [title, setTitle] = useState("");
 
   const handleChange = (e) => {
@@ -10,13 +11,20 @@ function BookCreate(onSumbit) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onCreate(title);
+    setTitle("");
   };
   return (
-    <div>
+    <div className="book-create">
+      <h3>Add Book</h3>
       <form onSubmit={handleSubmit}>
-        <label htmlFor=""> title</label>
-        <input type="text" value={title} onChange={handleChange} />
-        <button>Add</button>
+        <label htmlFor=""> Title</label>
+        <input
+          className="input"
+          type="text"
+          value={title}
+          onChange={handleChange}
+        />
+        <button className="button ">Add</button>
       </form>
     </div>
   );
